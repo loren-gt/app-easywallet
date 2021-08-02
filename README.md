@@ -7,7 +7,7 @@ Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então
 ---
 ### ANTES DE COMEÇAR
 
-É importante ter o docker e o docker compose instalados em sua máquina para ter acesso ao projeto. Veja os passos a seguir caso precise prosseguir com a instalação dessas ferramentas:
+É importante ter o `docker` e o `docker compose` instalados em sua máquina para ter acesso ao projeto. Veja os passos a seguir caso precise prosseguir com a instalação dessas ferramentas:
 
 - Docker
     * Ir no site do Docker ([https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/))
@@ -15,7 +15,7 @@ Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então
     * Seguir o passa-a-passo do último link.
 
 - Docker Compose
-    * Ir até docker compose no site do Docker ([https://docs.docker.com/compose/](https://docs.docker.com/compose/))
+    * Ir até `docker compose` no site do Docker ([https://docs.docker.com/compose/](https://docs.docker.com/compose/))
     * Para Linux, rodar o comando:
 
         ```bash
