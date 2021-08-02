@@ -1,4 +1,4 @@
-# APP EASYWALLET 
+# APP EASYWALLET 💱
 
 ## PROJETO BACKEND
 
@@ -22,7 +22,7 @@ Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então
         sudo curl -L "[https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$](https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$)(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         ```
 
-    3. Dê as permissões de execução com o comando:
+    * Dê as permissões de execução com o comando:
 
         `sudo chmod +x /usr/local/bin/docker-compose`
 
@@ -37,5 +37,5 @@ Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então
 2. Instale as dependências
   * `npm install`
 
-3. Utilize o comando abaixo para rodar o banco:
+3. Utilize o comando abaixo para rodar o docker compose:
   * `docker-compose up`
