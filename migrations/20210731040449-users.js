@@ -1,5 +1,5 @@
 'use strict';
-// Migration
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Users', {
@@ -9,7 +9,10 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      isAdmin: Sequelize.BOOLEAN,
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
+        primaryKey: true,
+      },
       fullName: {
         type: Sequelize.STRING,
         allowNull: false,
