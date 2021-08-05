@@ -9,14 +9,14 @@ const getAllUsers = async () => {
 };
 
 const getById = async (id) => {
-  const error = { code: code[44], message: message.userIdInexistent }; 
   try {
     const user = await User.findByPk(
       id,
       { attributes: { exclude: ['password'] } },
-    );
-    return user;
-  } catch (e) {
+      );
+      return user;
+    } catch (e) {
+    const error = { code: code[44], message: message.userIdInexistent }; 
     throw error;
   }
 };

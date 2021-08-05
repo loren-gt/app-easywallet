@@ -59,10 +59,18 @@ const userMustBeDifferent = async (payer, payee) => {
   }
 };
 
+const compareAmount = async (value, payer) => {
+  if (value > payer) {
+    const error = { code: code[40], message: message.userMustBeDifferent };
+    throw error;
+  }
+};
+
 const verifyData = async (value, payer, payee) => {
   await verifyDataType(value, payer, payee);
   await userMustBeDifferent(payer, payee);
   await verifyValue(value);
+  await compareAmount(payer, payee);
   await user.getClientById(payer);
   await user.getById(payee);
 };
