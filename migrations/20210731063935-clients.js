@@ -1,17 +1,11 @@
 'use strict';
-// Migration
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Clients', {
-      id: {
+      userId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
         defaultValue: 1,
         references: {
           model: 'Users',
