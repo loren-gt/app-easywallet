@@ -67,9 +67,9 @@ const verifyData = async (value, payer, payee) => {
   await user.getById(payee);
 };
 
-const compareAmount = async (value, payerBalance) => {
+const compareAmount = (value, payerBalance) => {
   if (value > payerBalance) {
-    const error = { code: code[40], message: message.userMustBeDifferent };
+    const error = { code: code[40], message: message.transactionInvalid };
     throw error;
   }
 };
@@ -110,7 +110,7 @@ const transferMoneyById = async (value, payer, payee) => {
   const getPayee = await getWalletById(payee);
   const payerBalance = getPayer.balance;
   const payeeBalance = getPayee.balance;
-  await compareAmount(value, payerBalance);
+  compareAmount(value, payerBalance);
   const payerFinalBalance = payerBalance - value;
   const payeeFinalBalance = payeeBalance + value;
   await updateById(payer, payerFinalBalance);
@@ -132,19 +132,19 @@ const verifyIfDataExists = async (value, payer, payee) => {
 const verifyTransaction = async (value, payer, payee) => {
   await verifyIfDataExists(value, payer, payee);
   const balance = await verifyClientBalance(payer);
+  compareAmount(value, balance);
   if (value <= balance) {
     const result = await transferMoneyById(value, payer, payee);
     return result;
   } 
 };
-
-const updateTransaction = async (payer) => {
+const updateTransaction = async (value, payer) => {
   try {
     const transactionUpdated = await Transaction.update(
       { userNotified: true },
       {
         where: {
-          payerId: payer, userNotified: false,
+          payerId: payer, value, userNotified: false,
         },
         attributes: ['published'],
       },
