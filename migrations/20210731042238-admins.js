@@ -1,22 +1,18 @@
 'use strict';
-// Migration
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Admins', {
-      id: {
+      userId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
         defaultValue: 1,
+        primaryKey: true,
         references: {
           model: 'Users',
-          foreignKey: 'id',
+          key: 'id',
         },
+        field: 'userId',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
