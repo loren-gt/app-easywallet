@@ -4,7 +4,7 @@ const express = require('express');
 
 const route = require('./routes');
  
-const PORT = process.env.NODE_DOCKER_PORT || 3000;
+const PORT = process.env.NODE_DOCKER_PORT;
 
 const app = express();
 
