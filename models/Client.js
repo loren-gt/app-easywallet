@@ -1,17 +1,15 @@
 const createClient = (sequelize, DataTypes) => {
-  const Client = sequelize.define('Client', {
-    userId: {
-      type: DataTypes.INTEGER,
-      foreignKey: true,
-    },
+  const Client = sequelize.define('Client',
+  {
     cpf: DataTypes.STRING,
+
   },
-  { timestamps: false });
+  { timestamps: false, underscored: false });
 
   Client.associate = (models) => {
-    Client.belongsTo(models.User, { as: 'user', foreignKey: 'userId' });
+    Client.belongsTo(models.User, { as: 'user_c',foreignKey: 'userId' });
   };
-  
+
   return Client;
 };
 
