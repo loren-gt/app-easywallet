@@ -5,6 +5,9 @@
 Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então, eu também imaginei. Esse projeto foi desenvolvido como uma maneira de tornar didático o aprendizado de tecnologias como ORM, Sequelize e MySQL, trabalhadas aqui em conjunto com JavaScript, Docker e NodeJS.
 
 ---
+### SOBRE O PROJETO
+
+---
 ### ANTES DE COMEÇAR
 
 É importante ter o `docker` e o `docker compose` instalados em sua máquina para ter acesso ao projeto. Veja os passos a seguir caso precise prosseguir com a instalação dessas ferramentas:
@@ -34,8 +37,5 @@ Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd app-easywallet`
 
-2. Instale as dependências
-  * `npm install`
-
-3. Utilize o comando abaixo para rodar o docker compose:
+2. Utilize o comando abaixo para rodar o docker compose:
   * `docker-compose up`
