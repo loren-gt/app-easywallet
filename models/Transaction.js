@@ -10,7 +10,7 @@ const createTransaction = (sequelize, DataTypes) => {
     },
     value: DataTypes.FLOAT,
     published: DataTypes.DATE,
-    updated: DataTypes.DATE,
+    userNotified: DataTypes.BOOLEAN,
   },
   { timestamps: false });
 

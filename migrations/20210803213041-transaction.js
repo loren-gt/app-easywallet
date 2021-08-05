@@ -33,7 +33,7 @@ module.exports = {
       },
       value: Sequelize.FLOAT,
       published: Sequelize.DATE,
-      updated: Sequelize.DATE,
+      userNotified: Sequelize.BOOLEAN,
     });
   },
 

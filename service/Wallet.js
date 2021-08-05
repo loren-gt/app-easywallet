@@ -1,6 +1,6 @@
 const { Wallet, Transaction } = require('../models');
 const user = require('./User');
-const { authorizeTransaction } = require('../helpers/fetchMessages');
+const { authorizeTransaction, notifyTransaction } = require('../helpers/fetchMessages');
 const { code, message } = require('../helpers/messages');
 
 const getWallets = async () => {
@@ -90,13 +90,13 @@ const updateById = async (personId, balanceFinal) => {
 const addTransaction = async (value, payer, payee) => {
   try {
     const published = Date.now();
-    const updated = Date.now();
+    const userNotified = false;
     await Transaction.create({
       payerId: payer,
       payeeId: payee,
       value,
       published,
-      updated,
+      userNotified,
     });
   } catch (e) {
     const error = { code: code[50], message: message.addFailed };
@@ -138,8 +138,30 @@ const verifyTransaction = async (value, payer, payee) => {
   } 
 };
 
+const updateTransaction = async (payer) => {
+  try {
+    const transactionUpdated = await Transaction.update(
+      { userNotified: true },
+      {
+        where: {
+          payerId: payer, userNotified: false,
+        },
+        attributes: ['published'],
+      },
+    );
+    if (transactionUpdated) {
+      const notification = await notifyTransaction();
+      console.log(notification);
+    }
+  } catch (e) {
+    const error = { message: message.serviceUnavailable };
+    console.log(error);
+  }
+};
+
 module.exports = {
   getWallets,
   getWalletById,
   verifyTransaction,
+  updateTransaction,
 };

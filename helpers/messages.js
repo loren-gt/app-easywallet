@@ -15,5 +15,6 @@ module.exports = {
     addFailed: 'Falha ao completar a transação',
     userMustBeDifferent: 'Pessoas usuárias precisam ser diferentes',
     notFound: 'Ah não! Rota não disponível :(',
+    serviceUnavailable: 'Serviço não disponível',
   },
 };
