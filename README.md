@@ -32,6 +32,26 @@ Pensado para ser um modelo simplificado de conta digital que permite transaçõe
    ```
 
 ---
+### DESENVOLVIMENTO
+
+Antes de começar a estruturar o código, primeiro busquei visualizar como se daria a relação entre as camadas da aplicação com o banco de dados. Além disso, pensei sobre como seria o relacionamento desses dados no banco e como estariam agrupados. Essas reflexões me levaram a escolher trabalhar com o *MySQL*, um banco de dados relacional, pois precisava criar um modelo simples de banco de dados que me permitisse ter **controle** sobre as operações envolvidas nas etapas de criação de tabelas e seus campos e de consulta ao banco. 
+
+Para dinamizar a criação e preenchimento das tabelas, escolhi trabalhar também com o *Sequelize ORM*, que iria ajudar nas etapas de consulta ao banco para buscar ou alterar dados específicos. Essa ferramenta iria trazer flexibilidade para o MySQL, aliando as vantagens de um banco relacional com a versatilidade de um ORM.
+
+Para completar, optei por usar o combo *JavaScript* + *NodeJS* para desenvolver a lógica do projeto e a estrutura MVC. 
+
+É importante mencionar que, no decorrer desse projeto, busquei configurar o *Docker* e o *Docker Compose* para "conteinerizar" minha aplicação, porém, devido a sucessivos erros nas etapas de configuração do Docker no projeto, acabei descartando essa ideia.
+
+**Entretanto, repare que existem arquivos relacionados ao Docker no projeto.** Isso se deu pois tenho o objetivo de registro e estudo dessa ferramenta (que ainda é nova para mim). Para rodar o projeto, porém, **esses arquivos não são necessários**, pois o Docker não será utilizado.
+
+Ainda devido ao Docker, optei por deixar um arquivo `.env` genérico na raiz do projeto. Aviso aqui contudo que **normalmente essa não é uma prática recomendada**. No meu caso, como precisei de um arquivo "ponte" para que a aplicação rode corretamente, deixei apenas o escopo das variáveis de ambiente necessárias ao projeto.
+
+Ok, falei bastante sobre o processo de escolha das ferramentas. Mas e quanto à solução em código?
+
+Posso dizer que o código foi elaborado a partir de vários esboços (vários mesmo 😅) sobre como seria a relação entre certas camadas da aplicação com o banco de dados, bem como o relacionamento entre tabelas do próprio banco. Mas finalmente cheguei a um padrão visual bem próximo ao que acabou ficando definido no código, a saber:
+
+![Esboço da interação entre APIs (Usuário e Carteira) com o Banco de dados](https://user-images.githubusercontent.com/60494155/128481328-7ce610d1-0267-4653-9ab4-f20fdf96066d.png)
+
 ### ANTES DE COMEÇAR
 
 É importante ter o `docker` e o `docker compose` instalados em sua máquina para ter acesso ao projeto. Veja os passos a seguir caso precise prosseguir com a instalação dessas ferramentas:
