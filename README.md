@@ -54,7 +54,7 @@ Posso dizer que o código foi elaborado a partir de vários esboços (vários me
 
 ### ANTES DE COMEÇAR
 
-É importante que você tenha em sua máquina ferramentas similares ao `Postman` e ao `MySQL Workbench`, uma vez que será necessário o acesso às rotas da aplicação por meio de requisições HTTP e às tabelas no banco de dados por meio de *queries*.
+Destaco que esse projeto não possui Front-end e, uma vez que será necessário o acesso para as rotas da aplicação por meio de requisições HTTP e para as tabelas no banco de dados por meio de *queries*, é recomendável que você tenha em sua máquina ferramentas similares ao `Postman` e ao `MySQL Workbench` para melhor consultar essas informações.
 
 ---
 ### INSTRUÇÕES PARA ACESSO:
@@ -98,6 +98,7 @@ Você já pode realizar as requisições e consultas ao banco normalmente.
   * `Wallets` - exibe informações como o saldo de todas as pessoas cadastradas.
   * `Transactions` - inicialmente vazia, vai sendo populada conforme as transações são realizadas. Ela exibe os dados de todas as transações.
 
+- A transação, representada pelo valor inserido pela pessoa usuária, contém as informações `value` (valor a ser transferido), `payer` (identificador da pessoa pagadora _ relacionada aqui com o identificador da tabela *Clients*) e `payee` (identificador da pessoa destinatária _ representada com o identificador da tabela *Admins*). 
 
 
 
