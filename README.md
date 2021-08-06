@@ -54,32 +54,62 @@ Posso dizer que o código foi elaborado a partir de vários esboços (vários me
 
 ### ANTES DE COMEÇAR
 
-É importante ter o `docker` e o `docker compose` instalados em sua máquina para ter acesso ao projeto. Veja os passos a seguir caso precise prosseguir com a instalação dessas ferramentas:
-
-- Docker
-    * Ir no site do Docker ([https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/))
-    * Escolher o seu OS em: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
-    * Seguir o passa-a-passo do último link.
-
-- Docker Compose
-    * Ir até `docker compose` no site do Docker ([https://docs.docker.com/compose/](https://docs.docker.com/compose/))
-    * Para Linux, rodar o comando:
-
-        ```bash
-        sudo curl -L "[https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$](https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$)(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        ```
-
-    * Dê as permissões de execução com o comando:
-
-        `sudo chmod +x /usr/local/bin/docker-compose`
+É importante que você tenha em sua máquina ferramentas similares ao `Postman` e ao `MySQL Workbench`, uma vez que será necessário o acesso às rotas da aplicação por meio de requisições HTTP e às tabelas no banco de dados por meio de *queries*.
 
 ---
 ### INSTRUÇÕES PARA ACESSO:
 
-1. Clone o repositório
+1. Clone o repositório:
   * `git clone https://github.com/loren-gt/app-easywallet.git`
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd app-easywallet`
 
-2. Utilize o comando abaixo para rodar o docker compose:
-  * `docker-compose up`
+2. Utilize o comando abaixo para iniciar seu servidor mysql:
+  * `sudo service mysql start`
+
+3. Instale as dependências do projeto:
+  * `npm install`
+
+4. Abra seu editor de texto na raiz do projeto e procure pelo arquivo `.env`. Insira no **valor** das três primeiras variáveis de ambiente suas informações para conectar a aplicação com o mysql.
+
+5. Use o comando abaixo para rodar a aplicação no seu terminal:
+  * `npm start`
+
+Caso os passos anteriores forem seguidos corretamente, a aplicação estará ativa e conectada à sua instância do MySQL na porta `3306`.
+Você já pode realizar as requisições e consultas ao banco normalmente.
+
+
+### INFORMAÇÕES ADICIONAIS
+
+- O projeto cria e popula *automagicamente* o banco de dados `users_api` assim que o comando `npm start` é utilizado. Caso você deseje deletar o banco do seu MySQL (o famoso termo *"dropar"* o banco), pare a aplicação no terminal (CTRL + C) e digite:
+  * `npm run drop`
+
+- As rotas do projeto são:
+  * `/user` - GET: exibe todos as pessoas usuárias
+  * `/user/:id` - GET: exibe um usuário específico (representado por *id*)
+  * `/wallet` - GET: exibe os dados da carteira de todas as pessoas usuárias 
+  * `/wallet/:id` - GET: exibe os dados da carteira de uma pessoa usuária específica
+  * `/transaction` - POST: analisa e efetua a transação entre duas pessoas usuárias
+
+- As tabelas do banco de dados são:
+  * `Admins` - representa os dados das pessoas usuárias do tipo jurídico.
+  * `Clients` - representa os dados das pessoas usuárias do tipo físico.
+  * `Users` - mostra os dados de todas as pessoas cadastradas.
+  * `Wallets` - exibe informações como o saldo de todas as pessoas cadastradas.
+  * `Transactions` - inicialmente vazia, vai sendo populada conforme as transações são realizadas. Ela exibe os dados de todas as transações.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
