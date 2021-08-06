@@ -9,16 +9,15 @@ const getAllUsers = async () => {
 };
 
 const getById = async (id) => {
-  try {
-    const user = await User.findByPk(
-      id,
-      { attributes: { exclude: ['password'] } },
-      );
-      return user;
-    } catch (e) {
+  const user = await User.findByPk(
+    id,
+    { attributes: { exclude: ['password'] } },
+  );
+  if (!user) {
     const error = { code: code[44], message: message.userIdInexistent }; 
     throw error;
   }
+  return user;
 };
 
 const getClientById = async (id) => {
