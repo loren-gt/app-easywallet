@@ -1,7 +1,7 @@
 {
   "name": "app-easywallet",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicação que simula o comportamento de uma carteira digital e realiza transações entre diferentes tipos de usuário",
   "main": "index.js",
   "scripts": {
     "test": "jest",
