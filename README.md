@@ -81,7 +81,7 @@ Dessa forma, sua aplicação estará ativa e conectada à instância do MySQL na
 
 Você já pode realizar as requisições e consultas ao banco normalmente.
 
-3. *Opcional:* Se precisar parar a aplicação e executa-la novamente, utilize o comando a seguir **antes** de rodar o comando Docker anterior:
+3. *Opcional:* Se precisar parar a aplicação e executa-la novamente, utilize o comando a seguir **antes** de rodar o comando Docker anterior. Entretanto, **note que o comando a seguir irá limpar os containers e todas as images do seu pc. Utilize com sabedoria.** 😉  
 * `docker system prune --all --force --volumes`
 
 
