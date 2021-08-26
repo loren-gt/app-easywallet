@@ -4,7 +4,7 @@
 
 Já imaginou como funcionaria uma carteira digital "por baixo dos panos"? Então, eu também imaginei 😄.
 
-Como uma forma de consolidar meus aprendizados com as tecnologias Sequelize ORM e MySQL, trabalhadas em conjunto com JavaScript e NodeJS, desenvolvi esse projeto que simula o backend de uma carteira digital, onde é possível acessar as rotas da aplicação, um banco de dados pré-definido, e simular transferências em $$ entre as pessoas usuárias. Tudo isso observando os padrões de arquitetura MVC e API RESTful. 
+Como uma forma de consolidar meus aprendizados com as tecnologias Sequelize ORM e MySQL, trabalhadas em conjunto com JavaScript, NodeJS e Docker, desenvolvi esse projeto que simula o backend de uma carteira digital, onde é possível acessar as rotas da aplicação, um banco de dados pré-definido, e simular transferências em $$ entre as pessoas usuárias. Tudo isso observando os padrões de arquitetura MVC e API RESTful. 
 
 ---
 ### SOBRE O PROJETO
@@ -40,11 +40,11 @@ Para dinamizar a criação e preenchimento das tabelas, escolhi trabalhar també
 
 Para completar, optei por usar o combo *JavaScript* + *NodeJS* para desenvolver a lógica do projeto e a estrutura MVC. 
 
-É importante mencionar que, no decorrer desse projeto, busquei configurar o *Docker* e o *Docker Compose* para "conteinerizar" minha aplicação, porém, devido a sucessivos erros nas etapas de configuração do Docker no projeto, acabei descartando essa ideia.
+<!-- É importante mencionar que, no decorrer desse projeto, busquei configurar o *Docker* e o *Docker Compose* para "conteinerizar" minha aplicação, porém, devido a sucessivos erros nas etapas de configuração do Docker no projeto, acabei descartando essa ideia.
 
-**Entretanto, repare que existem arquivos relacionados ao Docker no projeto.** Isso se deu pois tenho o objetivo de registro e estudo dessa ferramenta (que ainda é nova para mim). Para rodar o projeto, porém, **esses arquivos não são necessários**, pois o Docker não será utilizado.
+**Entretanto, repare que existem arquivos relacionados ao Docker no projeto.** Isso se deu pois tenho o objetivo de registro e estudo dessa ferramenta (que ainda é nova para mim). Para rodar o projeto, porém, **esses arquivos não são necessários**, pois o Docker não será utilizado. -->
 
-Ainda devido ao Docker, optei por deixar um arquivo `.env` genérico na raiz do projeto. Aviso aqui contudo que **normalmente essa não é uma prática recomendada**. No meu caso, como precisei de um arquivo "ponte" para que a aplicação rode corretamente, deixei apenas o escopo das variáveis de ambiente necessárias ao projeto.
+Como preferi utilizar o *Docker* para carregar os containers de minha aplicação e banco de dados, optei por deixar um arquivo `.env` genérico na raiz do projeto. Aviso aqui contudo que **normalmente essa não é uma prática recomendada**. No meu caso, como precisei de um arquivo "ponte" para que a aplicação rode corretamente, deixei apenas o escopo das variáveis de ambiente necessárias ao projeto.
 
 Ok, falei bastante sobre o processo de escolha das ferramentas. Mas e quanto à solução em código?
 
@@ -54,7 +54,9 @@ Posso dizer que o código foi elaborado a partir de vários esboços (vários me
 
 ### ANTES DE COMEÇAR
 
-Destaco que esse projeto não possui Front-end e, uma vez que será necessário o acesso para as rotas da aplicação por meio de requisições HTTP e para as tabelas no banco de dados por meio de *queries*, é recomendável que você tenha em sua máquina ferramentas similares ao `Postman` e ao `MySQL Workbench` para melhor consultar essas informações.
+Esse projeto utiliza `Docker` para ser inicializado, portanto, é preciso que você já o tenha instalado em sua máquina antes de executar os passos a seguir.
+
+Destaco ainda que esse projeto não possui Front-end e, uma vez que será necessário o acesso para as rotas da aplicação por meio de requisições HTTP e para as tabelas no banco de dados por meio de *queries*, é recomendável que você tenha em sua máquina ferramentas similares ao `Postman` e ao `MySQL Workbench` para melhor consultar essas informações.
 
 ---
 ### INSTRUÇÕES PARA ACESSO:
@@ -64,25 +66,30 @@ Destaco que esse projeto não possui Front-end e, uma vez que será necessário 
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd app-easywallet`
 
-2. Utilize o comando abaixo para iniciar seu servidor mysql:
-  * `sudo service mysql start`
+2. Utilize o comando abaixo para rodar o projeto com Docker:
+  * `docker-compose up --force-recreate`
 
-3. Instale as dependências do projeto:
+<!-- 3. Instale as dependências do projeto:
   * `npm install`
 
 4. Abra seu editor de texto na raiz do projeto e procure pelo arquivo `.env`. Insira no **valor** das três primeiras variáveis de ambiente suas informações para conectar a aplicação com o mysql.
 
 5. Use o comando abaixo para rodar a aplicação no seu terminal:
-  * `npm start`
+  * `npm start` -->
 
-Caso os passos anteriores forem seguidos corretamente, a aplicação estará ativa e conectada à sua instância do MySQL na porta `3306`.
+Dessa forma, sua aplicação estará ativa e conectada à instância do MySQL na porta `3306`.
+
 Você já pode realizar as requisições e consultas ao banco normalmente.
+
+3. *Opcional:* Se precisar parar a aplicação e executa-la novamente, utilize o comando a seguir **antes** de rodar o comando Docker anterior:
+* `docker system prune --all --force --volumes`
 
 
 ### INFORMAÇÕES ADICIONAIS
 
-- O projeto cria e popula *automagicamente* o banco de dados `users_api` assim que o comando `npm start` é utilizado. Caso você deseje deletar o banco do seu MySQL (o famoso termo *"dropar"* o banco), pare a aplicação no terminal (CTRL + C) e digite:
-  * `npm run drop`
+- O projeto cria e popula *automagicamente* o banco de dados `users_api` assim que o `Docker` levanta os containers necessários.
+<!-- Caso você deseje deletar o banco do seu MySQL (o famoso termo *"dropar"* o banco), pare a aplicação no terminal (CTRL + C) e digite:
+  * `npm run drop` -->
 
 - As rotas do projeto são:
   * `/user` - GET: exibe todos as pessoas usuárias
